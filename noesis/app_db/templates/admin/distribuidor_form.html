@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ distribuidor.id_dis|default:"Crear Distribuidor" }}{% endblock %}
+
+{% block content %}
+<h2>{{ distribuidor.id_dis|default:"Crear Distribuidor" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="nom_dis">Nombre:</label>
+        <input type="text" id="nom_dis" name="nom_dis" value="{{ distribuidor.nom_dis|default:'' }}" required>
+    </div>
+    <div>
+        <label for="tel_dis">Teléfono:</label>
+        <input type="tel" id="tel_dis" name="tel_dis" value="{{ distribuidor.tel_dis|default:'' }}">
+    </div>
+    <div>
+        <label for="dir_dis">Dirección:</label>
+        <input type="text" id="dir_dis" name="dir_dis" value="{{ distribuidor.dir_dis|default:'' }}">
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'admin_distribuidor_list' %}">Cancelar</a>
+</form>
+{% endblock %}

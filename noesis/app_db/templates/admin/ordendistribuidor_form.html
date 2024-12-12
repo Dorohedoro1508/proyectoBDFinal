@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ orden.id_ord|default:"Crear Orden" }}{% endblock %}
+
+{% block content %}
+<h2>{{ orden.id_ord|default:"Crear Orden de Distribuidor" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="fec_ord">Fecha:</label>
+        <input type="date" id="fec_ord" name="fec_ord" value="{{ orden.fec_ord|default:'' }}" required>
+    </div>
+    <div>
+        <label for="est_ord">Estado:</label>
+        <input type="text" id="est_ord" name="est_ord" value="{{ orden.est_ord|default:'' }}">
+    </div>
+    <div>
+        <label for="id_dis">Distribuidor:</label>
+        <select id="id_dis" name="id_dis" required>
+            <option value="">Selecciona un distribuidor</option>
+            {% for distribuidor in distribuidores %}
+            <option value="{{ distribuidor.id_dis }}" {% if orden and orden.id_dis.id_dis == distribuidor.id_dis %}selected{% endif %}>
+                {{ distribuidor.nom_dis }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="id_emp">Empleado:</label>
+        <select id="id_emp" name="id_emp" required>
+            <option value="">Selecciona un empleado</option>
+            {% for empleado in empleados %}
+            <option value="{{ empleado.id_emp }}" {% if orden and orden.id_emp.id_emp == empleado.id_emp %}selected{% endif %}>
+                {{ empleado.nomb_emp }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'admin_ordendistribuidor_list' %}">Cancelar</a>
+</form>
+{% endblock %}

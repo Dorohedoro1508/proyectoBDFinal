@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+<h2>Lista de Productos</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id_pro }}</td>
+            <td>{{ producto.nom_pro }}</td>
+            <td>{{ producto.des_pro }}</td>
+            <td>{{ producto.pre_pro }}</td>
+            <td>
+                <a href="{% url 'admin_producto_update' producto.id_pro %}">Editar</a> |
+                <a href="{% url 'admin_producto_delete' producto.id_pro %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'admin_producto_create' %}" class="btn">Crear Producto</a>
+{% endblock %}

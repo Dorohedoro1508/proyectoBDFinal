@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ detalle.id_det|default:"Crear Detalle" }}{% endblock %}
+
+{% block content %}
+<h2>{{ detalle.id_det|default:"Crear Detalle de Orden" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="id_ord">Orden:</label>
+        <select id="id_ord" name="id_ord" required>
+            <option value="">Selecciona una orden</option>
+            {% for orden in ordenes %}
+            <option value="{{ orden.id_ord }}" {% if detalle and detalle.id_ord.id_ord == orden.id_ord %}selected{% endif %}>
+                Orden #{{ orden.id_ord }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="id_pro">Producto:</label>
+        <select id="id_pro" name="id_pro" required>
+            <option value="">Selecciona un producto</option>
+            {% for producto in productos %}
+            <option value="{{ producto.id_pro }}" {% if detalle and detalle.id_pro.id_pro == producto.id_pro %}selected{% endif %}>
+                {{ producto.nom_pro }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="can_pro">Cantidad:</label>
+        <input type="number" id="can_pro" name="can_pro" value="{{ detalle.can_pro|default:'' }}" required>
+    </div>
+    <div>
+        <label for="pre_uni">Precio Unitario:</label>
+        <input type="number" id="pre_uni" name="pre_uni" step="0.01" value="{{ detalle.pre_uni|default:'' }}" required>
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'admin_detalleorden_list' %}">Cancelar</a>
+</form>
+{% endblock %}

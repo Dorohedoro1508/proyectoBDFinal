@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Empleados{% endblock %}
+
+{% block content %}
+<h2>Lista de Empleados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>Fecha de Ingreso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{ empleado.id_emp }}</td>
+            <td>{{ empleado.nomb_emp }}</td>
+            <td>{{ empleado.pue_emp }}</td>
+            <td>{{ empleado.fec_emp }}</td>
+            <td>
+                <a href="{% url 'admin_empleado_update' empleado.id_emp %}">Editar</a> |
+                <a href="{% url 'admin_empleado_delete' empleado.id_emp %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'admin_empleado_create' %}" class="btn">Crear Empleado</a>
+{% endblock %}

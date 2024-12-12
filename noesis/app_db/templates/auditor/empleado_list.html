@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Empleados{% endblock %}
+
+{% block content %}
+<h2>Lista de Empleados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>Fecha de Ingreso</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{ empleado.id_emp }}</td>
+            <td>{{ empleado.nomb_emp }}</td>
+            <td>{{ empleado.pue_emp }}</td>
+            <td>{{ empleado.fec_emp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'auditor_dashboard' %}" class="btn">Regresar</a>
+{% endblock %}

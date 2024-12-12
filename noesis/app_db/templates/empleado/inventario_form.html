@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ inventario.id_inv|default:"Crear Inventario" }}{% endblock %}
+
+{% block content %}
+<h2>{{ inventario.id_inv|default:"Crear Inventario" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="fec_inv">Fecha:</label>
+        <input type="date" id="fec_inv" name="fec_inv" value="{{ inventario.fec_inv|default:'' }}" required>
+    </div>
+    <div>
+        <label for="can_inv">Cantidad:</label>
+        <input type="number" id="can_inv" name="can_inv" value="{{ inventario.can_inv|default:'' }}" required>
+    </div>
+    <div>
+        <label for="ubi_inv">Ubicación:</label>
+        <input type="text" id="ubi_inv" name="ubi_inv" value="{{ inventario.ubi_inv|default:'' }}">
+    </div>
+    <div>
+        <label for="id_pro">Producto:</label>
+        <select id="id_pro" name="id_pro" required>
+            <option value="">Selecciona un producto</option>
+            {% for producto in productos %}
+            <option value="{{ producto.id_pro }}" {% if inventario and inventario.id_pro.id_pro == producto.id_pro %}selected{% endif %}>
+                {{ producto.nom_pro }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'empleado_inventario_list' %}">Cancelar</a>
+</form>
+{% endblock %}

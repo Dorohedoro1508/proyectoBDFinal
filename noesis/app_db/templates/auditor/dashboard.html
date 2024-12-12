@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard del Auditor{% endblock %}
+
+{% block content %}
+<h2>Bienvenido al Panel del Auditor</h2>
+<p>Desde aquí puedes consultar los registros de todas las tablas del sistema:</p>
+<ul>
+    <li><a href="{% url 'auditor_producto_list' %}">Productos</a></li>
+    <li><a href="{% url 'auditor_inventario_list' %}">Inventarios</a></li>
+    <li><a href="{% url 'auditor_ordendistribuidor_list' %}">Órdenes de Distribuidor</a></li>
+    <li><a href="{% url 'auditor_detalleorden_list' %}">Detalles de Órdenes</a></li>
+    <li><a href="{% url 'auditor_distribuidor_list' %}">Distribuidores</a></li>
+    <li><a href="{% url 'auditor_empleado_list' %}">Empleados</a></li>
+    <li>
+        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">
+                Cerrar sesión
+            </button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

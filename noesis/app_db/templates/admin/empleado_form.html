@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ empleado.id_emp|default:"Crear Empleado" }}{% endblock %}
+
+{% block content %}
+<h2>{{ empleado.id_emp|default:"Crear Empleado" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="nomb_emp">Nombre:</label>
+        <input type="text" id="nomb_emp" name="nomb_emp" value="{{ empleado.nomb_emp|default:'' }}" required>
+    </div>
+    <div>
+        <label for="pue_emp">Puesto:</label>
+        <input type="text" id="pue_emp" name="pue_emp" value="{{ empleado.pue_emp|default:'' }}" required>
+    </div>
+    <div>
+        <label for="fec_emp">Fecha de Ingreso:</label>
+        <input type="date" id="fec_emp" name="fec_emp" value="{{ empleado.fec_emp|default:'' }}">
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'admin_empleado_list' %}">Cancelar</a>
+</form>
+{% endblock %}

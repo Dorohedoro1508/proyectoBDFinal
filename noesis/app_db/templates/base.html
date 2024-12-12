@@ -1,0 +1,48 @@
+{% load user_groups %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Gestor de Base de Datos</h1>
+        <nav>
+            <ul>
+                <!-- Opciones de navegación específicas para cada perfil -->
+                {% if user.is_authenticated %}
+                    {% if user|has_group:"Administrador" %}
+                        <li><a href="{% url 'admin_dashboard' %}">Inicio</a></li>
+                    {% elif user|has_group:"Empleado" %}
+                        <li><a href="{% url 'empleado_dashboard' %}">Inicio</a></li>
+                    {% elif user|has_group:"Auditor" %}
+                        <li><a href="{% url 'auditor_dashboard' %}">Inicio</a></li>
+                    {% endif %}
+                    
+                    <!-- Formulario para cerrar sesión -->
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">
+                                Cerrar sesión
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Neosis Systems</p>
+    </footer>
+</body>
+</html>
+

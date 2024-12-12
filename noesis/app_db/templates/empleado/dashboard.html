@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Empleado</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.username }}</h1>
+    <h2>Panel del Empleado</h2>
+    <ul>
+        <li><strong>Gestión de Productos:</strong></li>
+        <ul>
+            <li><a href="{% url 'empleado_producto_list' %}">Lista de Productos</a></li>
+            <li><a href="{% url 'empleado_producto_create' %}">Agregar Producto</a></li>
+        </ul>
+        <li><strong>Gestión de Inventarios:</strong></li>
+        <ul>
+            <li><a href="{% url 'empleado_inventario_list' %}">Lista de Inventarios</a></li>
+            <li><a href="{% url 'empleado_inventario_create' %}">Agregar Inventario</a></li>
+        </ul>
+        <li><strong>Gestión de Órdenes:</strong></li>
+        <ul>
+            <li><a href="{% url 'empleado_ordendistribuidor_list' %}">Lista de Órdenes</a></li>
+            <li><a href="{% url 'empleado_ordendistribuidor_create' %}">Agregar Orden</a></li>
+        </ul>
+        <li><strong>Gestión de Detalles de Órdenes:</strong></li>
+        <ul>
+            <li><a href="{% url 'empleado_detalleorden_list' %}">Lista de Detalles</a></li>
+            <li><a href="{% url 'empleado_detalleorden_create' %}">Agregar Detalle</a></li>
+        </ul>
+        <li>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">
+                    Cerrar sesión
+                </button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

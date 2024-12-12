@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Administrador</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.username }}</h1>
+    <h2>Panel del Administrador</h2>
+    <ul>
+        <li><strong>Gestión de Productos:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_producto_list' %}">Lista de Productos</a></li>
+            <li><a href="{% url 'admin_producto_create' %}">Agregar Producto</a></li>
+        </ul>
+        <li><strong>Gestión de Inventarios:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_inventario_list' %}">Lista de Inventarios</a></li>
+            <li><a href="{% url 'admin_inventario_create' %}">Agregar Inventario</a></li>
+        </ul>
+        <li><strong>Gestión de Empleados:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_empleado_list' %}">Lista de Empleados</a></li>
+            <li><a href="{% url 'admin_empleado_create' %}">Agregar Empleado</a></li>
+        </ul>
+        <li><strong>Gestión de Distribuidores:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_distribuidor_list' %}">Lista de Distribuidores</a></li>
+            <li><a href="{% url 'admin_distribuidor_create' %}">Agregar Distribuidor</a></li>
+        </ul>
+        <li><strong>Gestión de Órdenes:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_ordendistribuidor_list' %}">Lista de Órdenes</a></li>
+            <li><a href="{% url 'admin_ordendistribuidor_create' %}">Agregar Orden</a></li>
+        </ul>
+        <li><strong>Gestión de Detalles de Órdenes:</strong></li>
+        <ul>
+            <li><a href="{% url 'admin_detalleorden_list' %}">Lista de Detalles</a></li>
+            <li><a href="{% url 'admin_detalleorden_create' %}">Agregar Detalle</a></li>
+        </ul>
+        <li><strong>Gestión de Respaldos:</strong></li>
+        <ul>
+            <li><a href="{% url 'descargar_respaldo' %}">Descargar Respaldo</a></li>
+            <li><a href="{% url 'subir_respaldo' %}">Subir Respaldo</a></li>
+        </ul>
+        <li>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">
+                    Cerrar sesión
+                </button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

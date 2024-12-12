@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Inventarios{% endblock %}
+
+{% block content %}
+<h2>Lista de Inventarios</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Cantidad</th>
+            <th>Ubicación</th>
+            <th>Producto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inventario in inventarios %}
+        <tr>
+            <td>{{ inventario.id_inv }}</td>
+            <td>{{ inventario.fec_inv }}</td>
+            <td>{{ inventario.can_inv }}</td>
+            <td>{{ inventario.ubi_inv }}</td>
+            <td>{{ inventario.id_pro.nom_pro }}</td>
+            <td>
+                <a href="{% url 'admin_inventario_update' inventario.id_inv %}">Editar</a> |
+                <a href="{% url 'admin_inventario_delete' inventario.id_inv %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'admin_inventario_create' %}" class="btn">Crear Inventario</a>
+{% endblock %}

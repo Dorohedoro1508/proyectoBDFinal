@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Subir Respaldo{% endblock %}
+
+{% block content %}
+<h2>Subir Respaldo</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="backup_file">Selecciona un archivo de respaldo:</label>
+        <input type="file" id="backup_file" name="backup_file" accept=".sqlite3" required>
+    </div>
+    <button type="submit">Subir Respaldo</button>
+</form>
+<a href="{% url 'admin_dashboard' %}">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Inventario{% endblock %}
+
+{% block content %}
+<h2>Eliminar Inventario</h2>
+<p>¿Estás seguro de que deseas eliminar este inventario con ID <strong>{{ inventario.id_inv }}</strong>?</p>
+<p>Ubicación: <strong>{{ inventario.ubi_inv }}</strong></p>
+<p>Producto: <strong>{{ inventario.id_pro.nom_pro }}</strong></p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'empleado_inventario_list' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Detalles de Órdenes{% endblock %}
+
+{% block content %}
+<h2>Lista de Detalles de Órdenes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Orden</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detalle in detalles %}
+        <tr>
+            <td>{{ detalle.id_det }}</td>
+            <td>{{ detalle.id_ord.id_ord }}</td>
+            <td>{{ detalle.id_pro.nom_pro }}</td>
+            <td>{{ detalle.can_pro }}</td>
+            <td>{{ detalle.pre_uni }}</td>
+            <td>
+                <a href="{% url 'admin_detalleorden_update' detalle.id_det %}">Editar</a> |
+                <a href="{% url 'admin_detalleorden_delete' detalle.id_det %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'admin_detalleorden_create' %}" class="btn">Crear Detalle</a>
+{% endblock %}

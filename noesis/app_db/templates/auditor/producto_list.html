@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+<h2>Lista de Productos</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id_pro }}</td>
+            <td>{{ producto.nom_pro }}</td>
+            <td>{{ producto.des_pro }}</td>
+            <td>{{ producto.pre_pro }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'auditor_dashboard' %}" class="btn">Regresar</a>
+{% endblock %}

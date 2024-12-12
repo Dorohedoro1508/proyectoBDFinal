@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Órdenes de Distribuidor{% endblock %}
+
+{% block content %}
+<h2>Lista de Órdenes de Distribuidor</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Distribuidor</th>
+            <th>Empleado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orden in ordenes %}
+        <tr>
+            <td>{{ orden.id_ord }}</td>
+            <td>{{ orden.fec_ord }}</td>
+            <td>{{ orden.est_ord }}</td>
+            <td>{{ orden.id_dis.nom_dis }}</td>
+            <td>{{ orden.id_emp.nomb_emp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'auditor_dashboard' %}" class="btn">Regresar</a>
+{% endblock %}

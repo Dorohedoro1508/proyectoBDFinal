@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Detalles de Órdenes{% endblock %}
+
+{% block content %}
+<h2>Lista de Detalles de Órdenes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Orden</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detalle in detalles %}
+        <tr>
+            <td>{{ detalle.id_det }}</td>
+            <td>{{ detalle.id_ord.id_ord }}</td>
+            <td>{{ detalle.id_pro.nom_pro }}</td>
+            <td>{{ detalle.can_pro }}</td>
+            <td>{{ detalle.pre_uni }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'auditor_dashboard' %}" class="btn">Regresar</a>
+{% endblock %}

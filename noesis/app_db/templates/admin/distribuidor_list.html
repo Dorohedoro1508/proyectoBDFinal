@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Distribuidores{% endblock %}
+
+{% block content %}
+<h2>Lista de Distribuidores</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for distribuidor in distribuidores %}
+        <tr>
+            <td>{{ distribuidor.id_dis }}</td>
+            <td>{{ distribuidor.nom_dis }}</td>
+            <td>{{ distribuidor.tel_dis }}</td>
+            <td>{{ distribuidor.dir_dis }}</td>
+            <td>
+                <a href="{% url 'admin_distribuidor_update' distribuidor.id_dis %}">Editar</a> |
+                <a href="{% url 'admin_distribuidor_delete' distribuidor.id_dis %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'admin_distribuidor_create' %}" class="btn">Crear Distribuidor</a>
+{% endblock %}
