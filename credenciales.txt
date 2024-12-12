@@ -1,0 +1,19 @@
+Tipo de Usuario: Administrador
+Usuario: Jhony
+Contraseña: proyectobd
+
+Tipo de Usuario: Auditor
+Usuario: Ian
+Contraseña: proyectobd
+
+Tipo de Usuario: Empleado
+Usuario: Marisol
+Contraseña: proyectobd
+
+Tipo de Usuario: Empleado
+Usuario: Sebas
+Contraseña: proyectobd
+
+SuperUsuario
+Admin
+admin

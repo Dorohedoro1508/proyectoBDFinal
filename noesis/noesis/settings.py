@@ -45,7 +45,7 @@ ROOT_URLCONF = 'noesis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'app_db', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,4 +119,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'  # Opcional: redirige al login tras cerrar sesión
 
 # URL del login
-LOGIN_URL = '/'
+LOGIN_URL = '/login/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

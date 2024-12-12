@@ -27,5 +27,6 @@ urlpatterns = [
     path('auditor/', include('app_db.urls.urls_auditor')),  # Rutas para el Auditor
     path('login/', auth_views.LoginView.as_view(), name='login'),  # Vista de inicio de sesión
     path('logout/', LogoutView.as_view(), name='logout'),  # Vista de cierre de sesión
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
 ]
 
