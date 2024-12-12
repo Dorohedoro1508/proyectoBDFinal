@@ -22,8 +22,7 @@
             <td>{{ producto.des_pro }}</td>
             <td>{{ producto.pre_pro }}</td>
             <td>
-                <a href="{% url 'empleado_producto_update' producto.id_pro %}">Editar</a> |
-                <a href="{% url 'empleado_producto_delete' producto.id_pro %}">Eliminar</a>
+                <a href="{% url 'empleado_producto_update' producto.id_pro %}">Editar</a> 
             </td>
         </tr>
         {% endfor %}

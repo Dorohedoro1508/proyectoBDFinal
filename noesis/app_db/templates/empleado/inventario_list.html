@@ -24,8 +24,7 @@
             <td>{{ inventario.ubi_inv }}</td>
             <td>{{ inventario.id_pro.nom_pro }}</td>
             <td>
-                <a href="{% url 'empleado_inventario_update' inventario.id_inv %}">Editar</a> |
-                <a href="{% url 'empleado_inventario_delete' inventario.id_inv %}">Eliminar</a>
+                <a href="{% url 'empleado_inventario_update' inventario.id_inv %}">Editar</a> 
             </td>
         </tr>
         {% endfor %}
